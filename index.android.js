@@ -1,0 +1,1 @@
+import GoTReactNative from './src/App';

@@ -1,0 +1,3 @@
+rootProject.name = 'GoTReactNative'
+
+include ':app'
