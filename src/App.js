@@ -6,46 +6,35 @@
 
 import React, { Component } from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
+	AppRegistry,
+	StyleSheet
 } from 'react-native';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-const ToolbarAndroid = require('ToolbarAndroid');
+import {Container, Header, Title, Content, Footer} from 'native-base';
 
 import reducers from './reducers';
 import CharacterList from './containers/CharacterList';
 
+import myTheme from './themes/myTheme';
+
 const store = createStore(reducers);
 
 export default class GoTReactNative extends Component {
-  render() {
-    return(
-    <Provider store={store}>  
-        <View style={styles.container} >
-            <ToolbarAndroid title="GoT React Native" />
-            <CharacterList />
-        </View>
-    </Provider>
-    )
-  }
+	render() {
+		return(
+		<Provider store={store}>
+			<Container theme={myTheme}>
+				<Header>
+					<Title>Game Of Thrones Example</Title>
+				</Header>
+				<Content>
+					<CharacterList />
+				</Content>
+			</Container>
+		</Provider>
+		)
+	}
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    margin: 0
-  },
-  header: {
-    flex: 1,
-    backgroundColor: 'skyblue'
-  },
-  body: {
-    flex: 2,
-    backgroundColor: 'steelblue'
-  }
-})
 
 AppRegistry.registerComponent('GoTReactNative', () => GoTReactNative);

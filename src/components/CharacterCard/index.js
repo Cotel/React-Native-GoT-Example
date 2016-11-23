@@ -1,46 +1,55 @@
 import React, {Component} from 'react';
-import {
-    View,
-    Text,
-    Image,
-    StyleSheet
-} from 'react-native';
-import {
-    Card,
-    CardTitle,
-    CardImage
-} from 'react-native-card-view';
+import {Image, StyleSheet, Alert} from 'react-native';
+import {Container, Content, Card, CardItem, Thumbnail, Text, Button} from 'native-base';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+
+
+import {selectCharacter} from '../../actions/character.actions';
 
 class CharacterCard extends Component {
+    handlePress = () => {
+        this.props.selectCharacter(this.props.character.name)
+    }
+
     render () {
+        const {
+            character
+        } = this.props;
+
         return (
-            <Card style={styles.card}>
-                <CardImage>
-                    <Image style={styles.image} source={{uri: this.props.image}}>
-                    <Text style={styles.text} >{this.props.name}</Text>
-                    </Image>                    
-                </CardImage>
-            </Card>
+            <Container>
+                <Content>
+                    <Card>
+                        <CardItem>
+                            <Image style={styles.image} source={{uri: character.image}} />
+                        </CardItem>
+                        <CardItem>
+                            <Button transparent onPress={this.handlePress} >{character.name}</Button>
+                        </CardItem>
+                    </Card>
+                </Content>
+            </Container>
         )
     }
 }
 
 const styles = StyleSheet.create({
     image: {
-        width: 350,
+        resizeMode: 'cover',
+        width: null,
         height: 200
     },
     text: {
-        backgroundColor: 'rgba(0,0,0,0.3)',
-        height: 50,
-        marginTop: 160,
-        paddingLeft: 20,
-        fontSize: 24,
         color: 'white'
-    },
-    card: {
-        width: 600
     }
-})
 
-export default CharacterCard;
+});
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        selectCharacter: selectCharacter
+    }, dispatch)
+}
+
+export default connect(mapDispatchToProps)(CharacterCard);

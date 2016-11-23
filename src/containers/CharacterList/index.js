@@ -7,14 +7,14 @@ class CharacterList extends Component {
     renderCharacterList() {
         return this.props.characters.list.map((character) => {
             return (
-                <CharacterCard key={character.name} image={character.image} name={character.name} />
+                <CharacterCard key={character.name} character={character} />
             )
         })
     }
 
     render() {
         return(
-            <ScrollView style={styles.container}>
+            <ScrollView contentContainerStyle={styles.contentContainer}>
                 {this.renderCharacterList()}
             </ScrollView>
         )
@@ -22,7 +22,8 @@ class CharacterList extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
+    contentContainer: {
+        paddingBottom: 0
     }
 })
 
