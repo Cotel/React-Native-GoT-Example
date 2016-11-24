@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {Container, Content, Text, Header, Title} from 'native-base';
+import {Container, Content, Text, Header, Title, Button, Icon} from 'native-base';
 import {Image, StyleSheet, View} from 'react-native'
 import {connect} from 'react-redux';
+import {Actions} from 'react-native-router-flux';
 
 import myTheme from '../../themes/myTheme';
 
@@ -10,6 +11,9 @@ class CharacterDetails extends Component {
         return (
             <Container theme={myTheme}>
                 <Header>
+                    <Button transparent onPress={() => Actions.pop()}>
+                        <Icon name="ios-arrow-back" />
+                    </Button>
                     <Title>{this.props.title}</Title>
                 </Header>
                 <Content>                    

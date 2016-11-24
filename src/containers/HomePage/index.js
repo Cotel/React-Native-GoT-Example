@@ -9,7 +9,7 @@ class HomePage extends Component {
     render() {
         return (
             <Container theme={myTheme}>
-                <Header>
+                <Header>                       
                         <Title>Game Of Thrones Example</Title>
                 </Header>
 				<Content>                    
