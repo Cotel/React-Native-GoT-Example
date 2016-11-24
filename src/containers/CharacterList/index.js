@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 
 class CharacterList extends Component {
     renderCharacterList() {
-        return this.props.characters.list.map((character) => {
+        return this.props.characters.map((character) => {
             return (
                 <CharacterCard key={character.name} character={character} />
             )
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
     return {
-        characters: state.characters
+        characters: state.characters.list
     }
 }
 

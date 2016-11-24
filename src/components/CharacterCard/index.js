@@ -3,13 +3,13 @@ import {Image, StyleSheet, Alert} from 'react-native';
 import {Container, Content, Card, CardItem, Thumbnail, Text, Button} from 'native-base';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-
+import {Actions} from 'react-native-router-flux';
 
 import {selectCharacter} from '../../actions/character.actions';
 
 class CharacterCard extends Component {
-    handlePress = () => {
-        this.props.selectCharacter(this.props.character.name)
+    handlePress = (character) => {
+        Actions.details({data: character, title: "Details"})
     }
 
     render () {
@@ -25,7 +25,7 @@ class CharacterCard extends Component {
                             <Image style={styles.image} source={{uri: character.image}} />
                         </CardItem>
                         <CardItem>
-                            <Button transparent onPress={this.handlePress} >{character.name}</Button>
+                            <Button transparent onPress={() => this.handlePress(character)} >{character.name}</Button>
                         </CardItem>
                     </Card>
                 </Content>
@@ -46,10 +46,16 @@ const styles = StyleSheet.create({
 
 });
 
+function mapStateToProps(state) {
+    return {
+        characters: state.characters
+    }
+}
+
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         selectCharacter: selectCharacter
     }, dispatch)
 }
 
-export default connect(mapDispatchToProps)(CharacterCard);
+export default connect(mapStateToProps, mapDispatchToProps)(CharacterCard);
