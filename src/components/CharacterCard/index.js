@@ -1,15 +1,22 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {Image, StyleSheet, Alert} from 'react-native';
 import {Container, Content, Card, CardItem, Thumbnail, Text, Button} from 'native-base';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {Actions} from 'react-native-router-flux';
 
 import {selectCharacter} from '../../actions/character.actions';
 
 class CharacterCard extends Component {
+    static propTypes = {
+        character: PropTypes.object
+    }
+
+    static contextTypes = {
+        routes: PropTypes.object.isRequired
+    };
+
     handlePress = (character) => {
-        Actions.details({data: character, title: "Details"})
+        this.context.routes.details({data: character, title: "Details"})
     }
 
     render () {

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {ScrollView, Text, StyleSheet} from 'react-native';
+import {ScrollView, Text} from 'react-native';
 import CharacterCard from '../../components/CharacterCard';
 import {connect} from 'react-redux';
 
@@ -14,18 +14,12 @@ class CharacterList extends Component {
 
     render() {
         return(
-            <ScrollView contentContainerStyle={styles.contentContainer}>
+            <ScrollView>
                 {this.renderCharacterList()}
             </ScrollView>
         )
     }
 }
-
-const styles = StyleSheet.create({
-    contentContainer: {
-        paddingBottom: 0
-    }
-})
 
 function mapStateToProps(state) {
     return {
