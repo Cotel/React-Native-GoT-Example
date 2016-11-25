@@ -1,10 +1,12 @@
 import React, {Component, PropTypes} from 'react';
-import {Image, StyleSheet, Alert} from 'react-native';
+import {Image, Alert} from 'react-native';
 import {Container, Content, Card, CardItem, Thumbnail, Text, Button} from 'native-base';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 import {selectCharacter} from '../../actions/character.actions';
+
+import styles from './styles';
 
 class CharacterCard extends Component {
     static propTypes = {
@@ -40,18 +42,6 @@ class CharacterCard extends Component {
         )
     }
 }
-
-const styles = StyleSheet.create({
-    image: {
-        resizeMode: 'cover',
-        width: null,
-        height: 200
-    },
-    text: {
-        color: 'white'
-    }
-
-});
 
 function mapStateToProps(state) {
     return {

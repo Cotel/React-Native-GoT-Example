@@ -1,10 +1,11 @@
 import React, {Component, PropTypes} from 'react';
 import {Container, Content, Text, Header, Title, Button, Icon} from 'native-base';
-import {Image, StyleSheet, View} from 'react-native'
+import {Image, View} from 'react-native'
 import {connect} from 'react-redux';
 import {Actions} from 'react-native-router-flux';
 
 import myTheme from '../../themes/myTheme';
+import styles from './styles';
 
 class CharacterDetails extends Component {
     static contextTypes = {
@@ -39,23 +40,6 @@ class CharacterDetails extends Component {
         )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    },
-    image: {
-        flex: 1,
-        resizeMode: 'cover',
-        width: null,
-        height: 400
-    },
-    text: {
-        paddingTop: 20,
-        flex: 2
-    }
-});
-
 
 function mapStateToProps(state) {
     return {
