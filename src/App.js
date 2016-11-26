@@ -13,12 +13,13 @@ import {
 import {createStore, applyMiddleware, compose} from 'redux';
 import {Provider, connect} from 'react-redux';
 import {Router} from 'react-native-router-flux';
+import thunk from 'redux-thunk';
 
 import reducers from './reducers';
 import AppScenes from './AppScenes';
 
 const RouterWithRedux = connect()(Router);
-const middleware = [];
+const middleware = [thunk];
 const store = compose(applyMiddleware(...middleware)(createStore)(reducers));
 
 export default class GoTReactNative extends Component {
