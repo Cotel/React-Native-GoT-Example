@@ -4,7 +4,7 @@ import {
 
 const styles = StyleSheet.create({
     image: {
-        resizeMode: 'cover',
+        resizeMode: 'stretch',
         width: null,
         height: 200
     },

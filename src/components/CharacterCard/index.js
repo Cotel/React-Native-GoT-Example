@@ -27,18 +27,14 @@ class CharacterCard extends Component {
         } = this.props;
 
         return (
-            <Container>
-                <Content>
-                    <Card>
-                        <CardItem>
-                            <Image style={styles.image} source={{uri: character.image}} />
-                        </CardItem>
-                        <CardItem>
-                            <Button transparent onPress={() => this.handlePress(character)} >{character.name}</Button>
-                        </CardItem>
-                    </Card>
-                </Content>
-            </Container>
+            <Card>
+                <CardItem>
+                    <Image style={styles.image} source={{uri: character.image}} />
+                </CardItem>
+                <CardItem>
+                    <Button transparent onPress={() => this.handlePress(character)} >{character.name}</Button>
+                </CardItem>
+            </Card>
         )
     }
 }

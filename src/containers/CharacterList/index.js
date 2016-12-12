@@ -5,11 +5,11 @@ import CharacterCard from '../../components/CharacterCard';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import {fetchCharacters, listCharacters} from '../../actions/character.actions';
+import {fetchCharacters, listCharacters, listOfflineCharacters} from '../../actions/character.actions';
 
 class CharacterList extends Component {
     componentWillMount() {
-        this.props.listCharacters();
+        this.props.listOfflineCharacters();
         console.log(this.props.characters);
     }
 
@@ -36,7 +36,8 @@ class CharacterList extends Component {
 
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators({
-		listCharacters: listCharacters
+		listCharacters: listCharacters,
+        listOfflineCharacters: listOfflineCharacters
 	}, dispatch)
 }
 
